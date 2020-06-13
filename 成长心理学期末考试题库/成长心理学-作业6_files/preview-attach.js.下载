@@ -1,0 +1,26 @@
+$(document).ready(function() {
+	$(".attachNew").each(function(index, element) {
+        var element = $(this).children("span:first");
+        var objectId = $(element).attr("data");
+		var fileOriName = $(element).text();
+		fileOriName = encodeURIComponent(fileOriName);
+		var url = "/ueditorupload/read?objectId=" + objectId+"&fileOriName="+fileOriName;
+		$(element).parent().click(function() {
+			window.open(url, '_blank').location;
+		});
+	});
+    $(".attachNew img").unbind("click")
+	$(".attachUrl span").each(function(index, element) {
+		var url = $(this).attr("data");
+		$(this).parent().click(function() {
+			window.open(url, '_blank').location;
+		});
+	});
+
+	$(".attachZT span").each(function(index, element) {
+		var url = $(this).attr("data");
+		$(this).parent().click(function() {
+			window.open(url, '_blank').location;
+		});
+	});
+});

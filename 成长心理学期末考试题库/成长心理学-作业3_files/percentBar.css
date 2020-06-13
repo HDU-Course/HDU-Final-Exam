@@ -1,0 +1,40 @@
+.wrapper {
+/* 	width: 350px;
+	margin: 200px auto; */
+}
+.wrapper span{
+float:left;
+line-height:13px;
+color:#666;
+}
+.barouter{margin-bottom:20px;}
+.num{font-size:14px;color:#7c9d35;float:left;line-height:13px;padding-left:26px;font-weight:bold;}
+.percent{font-size:14px;color:#666;font-weight:bold;line-height:13px;padding-left:40px;}
+.wrapper p a {color:#757575; text-decoration:none;}
+.wrapper .load-bar {
+	margin-left: -16px;
+	float:left;
+	width: 600px;
+	height: 13px;
+	border-radius: 30px;
+	background: #dcdbd7;
+	position: relative;
+	box-shadow:
+ 0 1px 0 rgba(255, 255, 255, 0.8),  inset 0 2px 3px rgba(0, 0, 0, 0.2);
+
+}
+.wrapper .load-bar:hover .load-bar-inner, .wrapper .load-bar:hover #counter {
+	animation-play-state: paused;
+	-moz-animation-play-state: paused;
+	-o-animation-play-state: paused;
+	-webkit-animation-play-state: paused;
+}
+.wrapper .load-bar-inner {
+	height: 13px;
+	width: 0%;
+	border-radius: inherit;
+	position: relative;
+	background: #7b9e31 ;
+	
+	
+}

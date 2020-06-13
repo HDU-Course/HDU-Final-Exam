@@ -1,0 +1,86 @@
+a{text-decoration:none;}
+.header{border-bottom:1px solid #e4e4e5;position:relative;/*z-index:0;*/}
+.headerbgimage{width:100%;height:100%;position:absolute;left:0px;top:0px;
+}
+.headermask{width:100%;height:100%;position:absolute;left:0px;top:0px;opacity:0.6;filter:alpha(opacity=70);background:#fff}
+.headerwrap{height:50px;padding-top:10px;width:1190px;margin:0px auto;position:relative;z-index:1;color:#fff;}
+.menu{float:right;margin-top:5px;color:#fff}
+.menu li b {
+    display:inline-block;
+    background: url(/images/courselist/radius.png) no-repeat;
+    height: 17px;
+    line-height: 17px;
+    position: absolute;
+    right: -7px;
+    text-align: center;
+    top: -5px;
+    width: 17px;
+}
+.navhide{font-size:18px;color:#333;float:left;cursor:pointer;display:none;}
+.navhide span{width:27px;height:27px;background:url(/images/courselist/bg.png) 0px -240px;display:inline-block;float:left;margin-right:6px;cursor:pointer}
+.navshow{float:left}
+.navshow span{width:27px;height:27px;background:url(/images/courselist/bg.png) 0px -268px;display:inline-block;float:left;cursor:pointer}
+.navshow ul{float:left;margin-right:10px;}
+
+/* .menu{float:right;margin-top:5px;} */
+.menu li{float:left;margin-left:10px;position:relative}
+.menu li a {font-size: 18px;color: #333;padding: 2px 6px;border-radius: 3px}
+.menu li a:hover {color: #fff;background: #999;}
+.menu li a.current{background:#999;color:#fff}
+
+
+
+.header h1{font-size:24px;color:#333;font-weight:normal}
+.header h1 a{color:#333;}
+.header h1 span.articleschool{font-size:14px;color:#fff;text-decoration:underline}
+.headicon{cursor:pointer}
+.headicon img{vertical-align:middle;margin:0px 5px 0px 30px;border-radius:30px;}
+.headicon span{font-size:12px;}
+.navshow{display:block;}
+
+/*学生端头部*/
+.c-header{border-bottom:1px solid #e4e4e5;background:#fff;top:42px;width:100%;z-index:1}
+.headerwrap{height:50px;padding-top:10px;width:1100px;margin:0px auto;position:relative;z-index:1;color:#fff;}
+.c-menu{float:right;margin-top:5px;color:#fff}
+.c-menu li b {
+    display:inline-block;
+    background: url(/images/courselist/radius.png) no-repeat;
+    height: 17px;
+    line-height: 17px;
+    position: absolute;
+    right: -7px;
+    text-align: center;
+    top: -5px;
+    width: 17px;
+}
+.c-menu{float:right;margin-top:5px;}
+.c-menu li{float:left;margin-left:10px;position:relative}
+.c-menu li a{font-size:18px;color:#333;padding:2px 8px;border-radius:3px}
+.c-menu li a:hover {color: #fff;background: #999;}
+.c-menu li a.current{background:#999;color:#fff}
+
+.c-header h1{font-size:24px;color:#333;font-weight:normal}
+.c-header h1 a{color:#7b9e31;}
+.c-header h1 a:hover{text-decoration:underline;}
+.c-header h1 span.articleschool{font-size:14px;color:#fff;text-decoration:underline}
+.znote_w a {
+    background: url("../images/coursestar/notes.png") no-repeat scroll 5px center rgba(0, 0, 0, 0);
+    border: 1px solid #7b9e31;
+    border-radius: 3px;
+    display: inline-block;
+    height: 30px;
+    line-height: 30px;
+    margin-left: 10px;
+    padding-left: 30px;
+    padding-right: 15px;
+}
+.chClass{width:300px;border:solid 1px #CCC;padding:5px;background:#FFF;line-height:30px;display:none;}
+.f1{color:#7b9e31;cursor:pointer;}
+
+/** 讨论首页附件 **/
+.fileA {border: 1px solid #CCC;border-radius: 3px;font-size: 12px;display: inline-block;height: 26px; line-height: 26px; width: 88px;text-align: center;color: #4c4b4b}
+.fileInput{font-size:17px;width:84px;height:28px;line-height:32px;cursor:pointer;opacity: 0;margin-left:-87px}
+.noticeAttachment{max-height:120px;overflow:auto;}
+.oneAttachment{height:25px;line-height:25px;padding-left:15px;margin-top:5px;}
+.attachmentHref{color:blue;font-size:16px;text-align:center;height:25px;margin-left:10px}
+.attachmentDelete{color:#7b9e31;float:right;margin-right: 80px}

@@ -1,0 +1,32 @@
+﻿
+	var zt=document.getElementById("zt_u_abs");
+	zt.onmouseover = function(){
+		document.getElementById("zt_u_bg").style.display="block";
+	}
+	zt.onmouseout = function(){
+		document.getElementById("zt_u_bg").style.display="none";
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

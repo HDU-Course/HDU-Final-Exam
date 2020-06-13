@@ -1,0 +1,569 @@
+$(function() {
+	//每页的导航
+	$("#RightCon .RightTop .more").hover(function() {
+		$(this).addClass("Hover");
+	},function() {
+		$(this).removeClass("Hover");
+	});
+	
+	// 课程首页 下边的头像滚动
+	var count = $("#StuScrol li").length,
+		wid = count * 145;
+		
+	$("#StuScrol ul").css("width", wid + "px");
+	
+	if (count < 5) {
+		$("#StuScrol .StuPre").css("visibility", "hidden");
+		$("#StuScrol .StuNext").css("visibility", "hidden");
+	} else {
+		$("#StuScrol .StuPre").click(function() {
+			var curLeft = parseInt($("#StuScrol ul").css("left")); 
+			if (curLeft + 145*4 <= 0) {
+				$("#StuScrol ul").animate({
+					left : (curLeft + 145*4 + "px")
+				});
+			} else {
+				$("#StuScrol ul").animate({
+					left : "0px"
+				});
+			}
+		});
+		$("#StuScrol .StuNext").click(function() {
+			var curLeft = parseInt($("#StuScrol ul").css("left")); 
+			if (curLeft - 2*145*4 >= -wid) {
+				$("#StuScrol ul").animate({
+					left : (curLeft - 145*4 + "px")
+				});
+			} else {
+				$("#StuScrol ul").animate({
+					left : (-wid + 145*4 + "px")
+				});
+			}
+		});
+	}
+	
+	// 课程首页 待批作业 移动效果
+	$("#RightCon .WorkList li").hover(function() {
+		$(this).addClass("Hover");
+	},function() {
+		$(this).removeClass("Hover");
+	});
+	
+	// 讨论二级-新  回复框
+	$("#rep-list li .idt-bot-times .ibt-btn").each(function(i) {
+		if (i != 0) {
+			$(this).click(function() {
+				var par = $(this).parent().parent(),
+					wrapRep = par.find(".wrap-rep");
+					if (par.hasClass("ibr-show")) {
+						wrapRep.slideUp(1000,function() {
+							par.removeClass("ibr-show");
+						});
+					} else {
+						par.addClass("ibr-show");
+						wrapRep.slideDown(1000);
+
+						if (wrapRep.find("li").length <= 0) {
+							wrapRep.next().addClass("ibr-text-show");
+						} else {
+							wrapRep.next().removeClass("ibr-text-show");
+						}
+					}
+					
+			});
+		}	
+	});
+	$("#rep-list li .wrap-rep .talk-btn").click(function() {
+		$(this).parent().parent().next().toggleClass("ibr-text-show");
+	});
+	
+	$("#rep-list li .ibr-textarea .btnGray_1").click(function() {
+		$(this).parent().parent().toggleClass("ibr-text-show");
+	});
+	
+	// 学生端 课程首页 时光轴和通知列表效果
+	$("#Notice li").hover(function() {
+		$(this).addClass("Hover");
+	},function() {
+		$(this).removeClass("Hover");
+	});
+	
+	$("#DTList .DTListDaYi").hover(function() {
+		$(this).addClass("Hover");
+	},function() {
+		$(this).removeClass("Hover");
+	});
+	// 推荐视频/教参资源-新
+//	$("#resource .rcb-img").hover(function() {
+//		$(this).addClass("rcb-img-show");
+//	},function() {
+//		$(this).removeClass("rcb-img-show");
+//	});
+	// 添加资源新
+	$("#resource .rl-img").hover(function() {
+		$(this).addClass("rl-img-show");
+	},function() {
+		$(this).removeClass("rl-img-show");
+	});
+	
+	//章节资源、试卷、题库 滑过
+	$("#tableId tr").live("mouseover", function() {
+		$(this).addClass("Hover");
+	});
+	$("#tableId tr").live("mouseout", function() {
+		$(this).removeClass("Hover");
+	});
+	
+	//资料页开始-----------------------------------------------------------------------------------
+	// 上传和更多的下拉
+	$("#selected .morebtn").click(function(e) {
+			$(this).toggleClass("click");
+			return false;
+	});
+	$("#selected .morebtn li").eq(1).click(function(e) {
+		var checkboxs = $("#zlTable input[type='checkbox']");
+		checkboxs.each(function(index) {
+			if ($(this).prop("checked")) {
+				rename($(this).parent().parent());
+			}
+		});
+	});
+	$("#uploading").click(function(e) {
+		$(this).toggleClass("Hover");
+		return false;
+	});
+	$(document).bind("click", function() {
+		$("#selected .morebtn").removeClass("click");
+		$("#uploading").removeClass("Hover");
+	});
+		
+	$("#zlTable input[type='checkbox']").each(function() {
+		$(this).prop("checked", false);
+	});
+	$("#zlTable input[type='checkbox']").live("click", function() {
+		var checkboxs = $("#zlTable input[type='checkbox']"), temp = 1;
+		var count = checkboxs.eq(0).prop("checked") ? -1 : 0;
+		if (!checkboxs.index($(this))) {
+			checkboxs.prop("checked", $(this).prop("checked"));
+		}
+		
+		checkboxs.each(function(index) {
+			if ($(this).prop("checked")) {
+				if ($(this).parent().parent().attr("type") == "afolder"){
+					temp = 0;
+				}
+				count++;
+			}
+		});
+		
+		if (temp) {
+			temp = count > 1 ? 0 : 1;
+		}
+		
+		if (count >= checkboxs.length - 1) {
+			checkboxs.eq(0).prop("checked", true);
+		} else {
+			checkboxs.eq(0).prop("checked", false);
+		}
+		
+		if (count > 0) {
+			$("#selected").prev().css("display","none");
+			$("#selected").css("display", "block");
+			$("#selected").find("span").eq(0).text("已选中" + count + "个文件/文件夹");
+		} else {
+			$("#selected").prev().css("display","block");
+			$("#selected").css("display", "none");
+		}
+		
+		if (!temp) {
+			$("#selected").find("span").eq(1).text("打包");
+		} else {
+			$("#selected").find("span").eq(1).text(" 下载 ");
+		}
+	});
+		
+	// 新建文件夹
+	var mark = 1;
+	$("#uploading").prev().click(function() {
+		if (mark) {
+			mark = 0;
+		} else {
+			return false;
+		}
+	
+		//var date = new Date();
+		//var month = date.getMonth()+1;
+		//$("#flod td:last").text(date.getFullYear() + "-" + month + "-" + date.getDate());
+		
+		$("#tableId02").prepend("<tr>" + $("#flod tr").html() + "</tr>");
+	});
+
+// toobar  
+	$("#tableId02 tr .more").live("click", function() {
+		$(this).parent().toggleClass("Hover02");
+		var tr = $(this).parent().parent().parent();
+		$("#tableId02 input[type='checkbox']").prop("checked", false);
+		tr.find("input[type='checkbox']").prop("checked", true);
+		if ($(this).attr("type") == "afolder") {
+			$("#selected").find("span").eq(1).text("打包");
+		} else {
+			$("#selected").find("span").eq(1).text(" 下载 ");
+		}
+		$("#selected").prev().css("display","none");
+		$("#selected").css("display", "block");
+		$("#selected").find("span").eq(0).text("已选中" + 1 + "个文件/文件夹");
+		return false;
+	});
+	$("#tableId02 tr").live("mouseover", function() {
+		$(this).addClass("Hover");
+	});
+	$("#tableId02 tr").live("mouseleave", function() {
+		$(this).find(".Hover02").removeClass("Hover02");
+		$(this).removeClass("Hover");
+	});
+	
+	// 点击重命名
+	$("#tableId02 .moreCon li").live("click", function() {
+		if ($(this).index() == 1) {
+			rename($(this).parent().parent().parent().parent().parent());
+		}
+		$(this).parent().parent().parent().removeClass("Hover02");
+	});
+	
+	// 取消重命名
+	$("#tableId02 .rename .no").live("click",function() {
+		if ($(this).parent().parent().parent().find("input").eq(0).attr("value") == "") {
+			$(this).parent().parent().parent().remove();
+			mark = 1;
+			return false;
+		}
+		rename($(this).parent().parent().parent(), true);
+	});
+	
+	// 更多和设置
+	$("#tableId02 tr .shez").live("click",function(){
+		checkTr($(this));
+		var tr = $(this).parent().parent().parent();
+		beforset(this,tr.attr("isOpen"));
+	});
+	$("#tableId02 tr .download").live("click", function(){
+		checkTr($(this));
+		var tr = $(this).parent().parent().parent();
+		if(tr.attr("source") == 6) {
+			downloadData();
+		}else {
+			checkTr($(this));
+			var tr = $(this).parent().parent().parent();
+			var type = tr.attr("type");
+			var loadurl = tr.attr("loadurl");
+			var objectId = tr.attr("objectId");
+			var url = tr.attr("url");
+			var source = tr.attr("source");
+			var id = tr.attr("id");
+			var dataName = tr.attr("dataName");
+			toOpen(dataName,type,id,loadurl,objectId,url,1,source);
+		}
+	});
+	function checkTr(self) {
+		var tr = $(self).parent().parent().parent();
+		$("#tableId02 input[type='checkbox']").prop("checked", false);
+		tr.find("input[type='checkbox']").prop("checked", true);
+		if (tr.attr("type") == "afolder") {
+			$("#selected").find("span").eq(1).text("打包");
+		} else {
+			$("#selected").find("span").eq(1).text(" 下载 ");
+		}
+		$("#selected").prev().css("display","none");
+		$("#selected").css("display", "block");
+		$("#selected").find("span").eq(0).text("已选中" + 1 + "个文件/文件夹");
+	}
+	$("#selected #downText").live("click", function() {
+		if ($.trim($(this).text()) == "下载") {
+			$("#tableId02 input[type='checkbox']").each(function() {
+				if ($(this).prop("checked")) {
+					var tr = $(this).parent().parent();
+					var type = tr.attr("type");
+					var loadurl = tr.attr("loadurl");
+					var objectId = tr.attr("objectId");
+					var url = tr.attr("url");
+					var source = tr.attr("source");
+					var id = tr.attr("id");
+					var dataName = tr.attr("dataName");
+					toOpen(dataName,type,id,loadurl,objectId,url,1,source);
+				}
+			});
+		} else {
+			downloadData();
+		}
+	});
+	
+	//资料页结束-----------------------------------------------------------------------------------
+	// 批阅作业
+	$("#AnswerSheet .answerA").toggle(function() {
+		$(this).next().css("display", "block");
+		$(this).next().find("a").each(function() {
+			$(this).removeClass("done");
+		});
+	}, function() {
+		$(this).next().css("display", "none");
+	});
+	
+	$("#AnswerSheet .sheetA a").click(function() {
+		$("#AnswerSheet .sheetA a").each(function() {
+			$(this).removeClass("done");
+		});
+		$(this).addClass("done");
+		var index = $(this).index();
+		$("html, body").animate({"scrollTop": $("#ZyBottom .TiMu").eq(index).offset().top});
+	});
+	
+	//批阅作业新版js
+	$("#s2 .Listcon a").click(function() {
+		$("#s2 .Listcon a").each(function() {
+			$(this).removeClass("danull");
+		});
+		$(this).addClass("danull");
+		var index = $("#s2 .imglist a").index(this);
+		$("html, body").animate({"scrollTop": $("#ZyBottom .TiMu").eq(index).offset().top});
+	});
+	function xl(me){
+		var textarea = $(me).parent().next(),par = $(me).parent();
+		var comment = $(me).parent().parent().find(".editcomment"),par = $(me).parent();
+		comment.css("display","none");
+		while (!par.hasClass("TiMu")) {
+			par = par.parent();
+		}
+		
+		if (textarea.css("display") != "none") {
+			textarea.slideUp();
+			textarea.find("textarea").attr("value","");
+		} else {
+			textarea.slideDown();
+			//$("html, body").animate({"scrollTop": par.offset().top});
+		}
+	}
+	// 批阅作业
+	$("#ZyBottom .Py_addpy .font14 a:not(.bj)").click(function() {
+		xl($(this));
+	});
+	
+	$(".editcomment #cancle").click(function(){
+		
+		var topparent =$(this).parent().parent().parent();
+		var recordid = $(this).parent().find("input[name='recordid']").val();
+		var conmment = $(topparent).find('.pingyu').html();
+		UE.getEditor('answer'+recordid).setContent(conmment);
+		xl($(topparent).find(".xl"));
+	    
+	});
+	$("#ZyBottom .Py_addpy .font14 .bj").click(function(){
+		 var comment = $(this).parent().parent().find(".editcomment"),par = $(this).parent();
+		 var recordid = $(this).parent().parent().find("input[name='recordid']").val();
+		 var content = $(this).parent().parent().find('.pingyu').html();
+		 UE.getEditor('answer'+recordid).setContent(content);
+		 
+		 while (!par.hasClass("TiMu")) {
+			par = par.parent();
+		 };
+		 $(comment).parent().find('.Py_addpyNr').css("display","none");
+			if (comment.css("display") != "none") {
+				comment.slideUp();
+				
+			} else {
+				comment.slideDown();	
+				$("html, body").animate({"scrollTop": par.offset().top});
+			}
+	});
+	
+	
+	$(".editcomment #save").click(function(){
+		var me= $(this);
+		var recordid = $(this).parent().find("input[name='recordid']").val();
+		var conmment = UE.getEditor('answer'+recordid).getContent();
+		$(this).parent().parent().parent().find('.pingyu').html(conmment);
+		$("#comment").val(conmment);
+		$("#recordId").val(recordid);
+		$.ajax({
+			url:$("#form1").attr("action"),
+			data:$("#form1").serialize(),
+			type: 'POST',
+			success:function(){
+				xl($(me).parent().parent().parent().find(".xl"));
+			
+			}
+		});
+	});
+	
+	// 批阅作业
+	$("#ZyBottom .Py_addpy_New .font14 a").click(function() {
+		var textarea = $(this).parent().next(),par = $(this).parent();
+		
+		while (!par.hasClass("TiMu")) {
+			par = par.parent();
+		}
+		
+		if (textarea.css("display") != "none") {
+			textarea.slideUp();
+			textarea.find("textarea").attr("value","");
+		} else {
+			textarea.slideDown();
+			
+			//$("html, body").animate({"scrollTop": par.offset().top});
+		}
+	});
+	
+	$("#ZyBottom .Py_addpyNr .btnGray_2").click(function() {
+		var textarea = $(this).parent().parent();
+		textarea.slideUp();
+		textarea.find("textarea").attr("value","");
+	});
+	
+	//做作业
+	$("#ZyBottom .TiMu .w-top li").hover(function() {
+		var index = $(this).index(),
+			checks = $(this).parent().next();
+		$(this).addClass("Hover");
+		checks.find("li").eq(index).addClass("Hover");
+	},function() {
+		var index = $(this).index(),
+			checks = $(this).parent().next();
+		if (!checks.find("input").eq(index).prop("checked")) {
+			$(this).removeClass("Hover");
+			checks.find("li").eq(index).removeClass("Hover");
+		}
+	});
+	
+	$("#ZyBottom .TiMu .w-top li").click(function() {
+		var index = $(this).index(),
+			checks = $(this).parent().next(),
+			lis = $(this).parent().find("li");
+			
+			$(this).parent().find("li").removeClass("Hover");
+			checks.find("li").removeClass("Hover");
+			
+			if (checks.find("input").eq(index).prop("type") == "checkbox") {
+				checks.find("input").eq(index).prop("checked",(!checks.find("input").eq(index).prop("checked")));
+			} else {
+				checks.find("input").eq(index).prop("checked",true);
+			}
+			
+			checks.find("li").each(function() {
+				if ($(this).find("input").prop("checked")) {
+					$(this).addClass("Hover");
+					lis.eq($(this).index()).addClass("Hover");
+				}
+			});
+	});
+	
+	$("#ZyBottom .TiMu .w-buttom li").hover(function() {
+		var index = $(this).index(),
+			lis = $(this).parent().prev();
+		$(this).addClass("Hover");
+		lis.find("li").eq(index).addClass("Hover");
+	},function() {
+		var index = $(this).index(),
+			lis = $(this).parent().prev();
+		if (!$(this).find("input").prop("checked")) {
+			$(this).removeClass("Hover");
+			lis.find("li").eq(index).removeClass("Hover");
+		}
+	});
+	
+	$("#ZyBottom .TiMu .w-buttom li").click(function() {
+		var index = $(this).index(),
+			lis = $(this).parent().prev();
+			
+			$(this).parent().find("li").removeClass("Hover");
+			lis.find("li").removeClass("Hover");
+			
+			$(this).parent().find("li").each(function() {
+				if ($(this).find("input").prop("checked")) {
+					$(this).addClass("Hover");
+					lis.find("li").eq($(this).index()).addClass("Hover");
+				}
+			});
+	});
+	
+	// 做测验
+	$("#ZyBottom .Cy_tx a").hover(function() {
+		$(this).addClass("cur");
+	},function() {
+		if (!$(this).hasClass("clicked")) {
+			$(this).removeClass("cur");
+		}
+	});
+	$("#ZyBottom .Cy_tx a").click(function() {
+		$("#ZyBottom .Cy_tx a").removeClass("cur clicked");
+		$(this).addClass("cur clicked");
+	});
+	
+});
+// 有评分指标时 评语编辑器显示/隐藏功能
+function showComment(recordId, type) {
+	var textarea = $("#answer" + recordId).prev()
+	if (textarea.css("display") != "none" && typeof type == "undefined") {
+		$(textarea).parent().css("padding", "0px")
+		textarea.slideUp();
+		textarea.find("textarea").attr("value", "");
+	} else {
+		textarea.slideDown();
+		$(textarea).parent().css("padding", "15px")
+	}
+}
+//获取光标位置
+(function($, undefined) {
+    $.fn.getCursorPosition = function() {
+        var el = $(this).get(0);
+        var pos = 0;
+        if ('selectionStart' in el) {
+            pos = el.selectionStart;
+        } else if ('selection' in document) {
+            el.focus();
+            var Sel = document.selection.createRange();
+            var SelLength = document.selection.createRange().text.length;
+            Sel.moveStart('character', -el.value.length);
+            pos = Sel.text.length - SelLength;
+        }
+        return pos;
+    }
+})(jQuery);
+//设置光标位置
+$.fn.setCursorPosition = function(option) {
+    var settings = $.extend({
+        index: 0
+    }, option)
+    return this.each(function() {
+        var elem  = this
+        var val   = elem.value
+        var len   = val.length
+        var index = settings.index
+ 
+        // 非input和textarea直接返回
+        var $elem = $(elem)
+        if (!$elem.is('input,textarea')) return
+        // 超过文本长度直接返回
+        if (len < index) return
+ 
+        setTimeout(function() {
+            elem.focus()
+            if (elem.setSelectionRange) { // 标准浏览器
+                elem.setSelectionRange(index, index)   
+            } else { // IE9-
+                var range = elem.createTextRange()
+                range.moveStart("character", -len)
+                range.moveEnd("character", -len)
+                range.moveStart("character", index)
+                range.moveEnd("character", 0)
+                range.select()
+            }
+        }, 10)
+    })
+}
+
+function dealQueContent(_this) {
+    if ($(_this).is(":checked")) {
+        $('.subTitle').hide()
+    } else {
+        $('.subTitle').show()
+    }
+}

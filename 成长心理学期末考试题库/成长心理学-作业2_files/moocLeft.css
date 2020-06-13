@@ -1,0 +1,138 @@
+/*閺嶇厧绱￠崠鏍ㄧ壉瀵拷*/
+*{margin:0;padding:0}
+body{font:12px/1.5 MicroSoft YaHei,Arial, Helvetica, sans-serif;color:#333;}
+table{width:100%; border-collapse:collapse;border:none;border-spacing:0}
+a{color:#202020;text-decoration:none;}
+img{border:none}
+input{vertical-align:middle;outline:none}
+textarea{outline:none;}
+ul,ol,dl{list-style:none;}
+ol{padding-left:20px};
+b,em,i,u,strong{font-weight:normal;font-style:normal;text-decoration:none;}
+h1,h2,h3,h4,h5,h6{font-size:14px;font-weight:normal;}
+
+/*閸忣剙鍙￠弽宄扮础*/
+.fl{float:left;}
+.fr{float:right;}
+.clearfix{overflow:hidden;zoom:1}
+.clear{clear:both}
+.col5{color:#555;}
+.Btn_lv_1{display:inline-block; height:35px;padding:0 10px;background:#7790a0; font-size:14px; color:#FFF; line-height:33px; cursor:pointer; border-radius:3px;}
+.Btn_lv_1:hover{ background:#516979;color:#FFF;}
+
+.marLeft{margin-left:10px;}
+
+
+.wrap{width:1100px;margin:0 auto;}
+
+/*璇剧▼棣栭〉宸︿晶鍐呭*/
+.LeftCon {width: 226px;}
+.LeftCon .Courseimg{display:block;width:206px;height:129px;margin-left:10px;position:relative}
+.LeftCon .Courseimg b{position:absolute;width:206px;height:35px;top:94px;background:url(../images/imgBg.png) repeat;left:0;font-size:18px;color:#FFF;text-align:center;line-height:35px;}
+.LeftCon .indexnav{width:215px;height:108px;background:url(../images/Nav.png) no-repeat;position:relative;right:-20px;_right:-19px;}
+.LeftCon .indexnav a{display:block;margin:0 auto;width:148px;height:50px;background:url(../images/nav.jpg) no-repeat;margin-top:23px;line-height:50px;color:#FFF;text-align:center;font-family:Microsoft Yahei;font-size:20px;font-weight:bold;}
+.LeftCon ul li{height:40px;background:url(../images/navli.jpg) repeat-x top;padding-top:2px;overflow:hidden;}
+.LeftCon ul li a{display:block;text-align:left;line-height:40px;color:#000;font-size:16px;padding-left:60px;overflow:hidden;}
+.LeftCon ul li a:hover{background:url(../images/navHover.jpg) no-repeat;color:#FFF;}
+.LeftCon ul li a i.index{float:left;width:21px;height:20px;background:url(../images/navicon02.gif) no-repeat -43px top;margin-right:15px;margin-top:12px;}
+.LeftCon ul li a i.zy{float:left;width:21px;height:21px;background:url(../images/navicon02.gif) no-repeat -43px -48px;margin-right:15px;margin-top:12px;}
+.LeftCon ul li a i.zy{float:left;width:21px;height:21px;background:url(../images/navicon02.gif) no-repeat -43px -48px;margin-right:15px;margin-top:12px;}
+.LeftCon ul li a i.tl{float:left;width:21px;height:21px;background:url(../images/navicon02.gif) no-repeat -43px -97px;margin-right:15px;margin-top:12px;}
+.LeftCon ul li a i.dy{float:left;width:21px;height:21px;background:url(../images/navicon02.gif) no-repeat -43px -144px;margin-right:15px;margin-top:12px;}
+.LeftCon ul li a i.tz{float:left;width:21px;height:21px;background:url(../images/navicon02.gif) no-repeat -43px -193px;margin-right:15px;margin-top:12px;}
+.LeftCon ul li a i.zl{float:left;width:21px;height:21px;background:url(../images/navicon02.gif) no-repeat -43px -239px;margin-right:15px;margin-top:12px;}
+.LeftCon ul li a i.cy{float:left;width:21px;height:21px;background:url(../images/navicon02.gif) no-repeat -43px -289px;margin-right:15px;margin-top:12px;}
+.LeftCon ul li a i.fx{float:left;width:21px;height:21px;background:url(../images/navicon02.gif) no-repeat -43px -336px;margin-right:15px;margin-top:12px;}
+.LeftCon ul li a i.ml{float:left;width:21px;height:21px;background:url(../images/navicon02.gif) no-repeat -43px -383px;margin-right:15px;margin-top:12px;}
+.LeftCon ul li a i.pbl{float:left;width:21px;height:21px;background:url(../images/navicon02.gif) no-repeat -43px -427px;margin-right:15px;margin-top:12px;}
+.LeftCon ul li a:hover i.index{background-position:-1px top;}
+.LeftCon ul li a:hover i.zy{background-position:-1px -48px}
+.LeftCon ul li a:hover i.tl{background-position:-1px -97px;}
+.LeftCon ul li a:hover i.dy{background-position:-1px -144px;}
+.LeftCon ul li a:hover i.tz{background-position:-1px -193px;}
+.LeftCon ul li a:hover i.zl{background-position:-1px -239px;}
+.LeftCon ul li a:hover i.cy{background-position:-1px -289px;}
+.LeftCon ul li a:hover i.fx{background-position:-1px -336px;}
+.LeftCon ul li a:hover i.ml{background-position:-1px -383px;}
+.LeftCon ul li a:hover i.pbl{background-position:-1px -427px;}
+.LeftCon ul li a.cur{background:url(../images/navHover.jpg) no-repeat;color:#FFF;}
+.LeftCon ul li a.cur i.index{background-position:-1px top;}
+.LeftCon ul li a.cur i.zy{background-position:-1px -48px}
+.LeftCon ul li a.cur i.tl{background-position:-1px -97px;}
+.LeftCon ul li a.cur i.dy{background-position:-1px -144px;}
+.LeftCon ul li a.cur i.tz{background-position:-1px -193px;}
+.LeftCon ul li a.cur i.zl{background-position:-1px -239px;}
+.LeftCon ul li a.cur i.cy{background-position:-1px -289px;}
+.LeftCon ul li a.cur i.fx{background-position:-1px -336px;}
+.LeftCon ul li a.cur i.ml{background-position:-1px -383px;}
+.LeftCon ul li a.cur i.pbl{background-position:-1px -427px;}
+.LeftSide {background: url(../images/leftright.jpg) repeat-y  right bottom ;width: 226px;padding-top:10px;margin-top:100px}
+.leftBottom{height:5px;overflow:hidden;background:url(../images/leftbottom.jpg) no-repeat top;overflow:hidden;}
+.btnTop{height:5px;background:url(../images/btntop.jpg) no-repeat;overflow:hidden}
+.btnBottom{height:5px;background:url(../images/btnbottom.jpg) no-repeat;position:absolute;bottom:0;width:13px;overflow:hidden;bottom:-1px;}
+.LeftSearch{padding-bottom:10px;}
+.LeftSearch .DySeleft{width:190px;border:solid 1px #153f5e}
+.LeftSearch .DySeleft input.Inp{height:23px;width:142px;borde-rop:solid 1px #c2c2c2;borde-left:solid 1px #c2c2c2;padding:0 5px;line-height:23px;font-family:Microsoft YaHei;color:#555;}
+.LeftSearch .DySeleft input.sub{width:34px;height:24px;background:url(../images/leftsub.gif) no-repeat;border:none; cursor:pointer;}
+.LeftSearch  a.edit{height:18px;line-height:18px;padding-left:20px;background:url(../images/leftedit.gif) no-repeat;color:#FFF;font-size:14px;margin-top:5px;margin-left:15px;_margin-left:8px;}
+
+
+.workInfor{display:inline-block;height:16px;background:url(../images/workInfor.gif) no-repeat left;padding:0 5px;line-height:16px;font-size:12px;color:#FFF;margin-left:10px;margin-top:10px}
+
+/**
+鐠囧墽鈻兼＃鏍�婢舵挳鍎�
+**/
+.marTop12{margin-top:12px;}
+.content{/*margin-top:18px;*/position:relative;}
+.con{/*margin-top:18px;*/position:relative;}
+.indexTop{height:110px;position:absolute;width:1100px;top:10;left:0}
+.courseImg{width:226px;display:block;}
+.courseName{padding:0;height:auto; border-bottom:solid 20px #333; background:none #333;}
+
+.radiusBG_header{height:90px; padding:0 40px 0 10px; background:url(../images/clazz_bg.jpg) repeat; -webkit-border-radius:3px; -moz-border-radius:3px; -ms-border-radius:3px; border-radius:3px;}
+
+.courseName h3{font-size:14px;padding-top:10px;font-weight:bold;}
+.courseName h3 a{color:#058ff0}
+.courseName h3 a:hover{color:#067dd0}
+.courseName h3 span{font-size:16px;color:#555;}
+.courseName p{font-size:12px;margin-top:3px;color:#757575}
+.courseName ul.fr li.fl a{color:#058ff0}
+.courseName ul.fr li.fl a:hover{color:#067dd0}
+
+.navLIst{margin-top:25px;position:relative;margin-right:-20px;}
+.navLIst li{float:left;width:65px;height:67px;margin-right:20px;_margin-left:15px;}
+.navLIst li a{display:block;width:65px;height:67px;background:url(../images/icons.png) no-repeat -358px -36px;text-align:center;}
+.navLIst li a span{font-size:14px;display:block;color:#FFF;}
+.navLIst li a:hover{width:65px;height:67px;background:url(../images/icons.png) no-repeat right -36px;text-align:center}
+.navLIst li a b.b1{display:inline-block;width:31px;height:26px;background:url(../images/navicon02.gif) no-repeat left -483px;margin-top:10px;margin-left:6px;margin-bottom:2px}
+.navLIst li a b.b2{display:inline-block;width:28px;height:26px;background:url(../images/navicon02.gif) no-repeat -44px -483px;margin-top:10px;margin-bottom:2px;}
+
+.moocCon{background:url(../images/moocList.gif) repeat-y #FFF;margin-top:100px;padding-bottom:20px}
+/*.mooc{min-height:450px;height:auto !important;_height:450px;}*/
+.blue{color:#0099cc}
+.blue:hover{color:#0066cc}
+.copy{display:inline-block;background:url(../images/copy.gif) no-repeat;width:14px;height:14px;margin-left:5px;}
+
+.CeYan{padding:5px;}
+
+.RightCon{height:auto!important; min-height:auto!important;padding-left:0!important;padding-right:0!important;}
+.radiusBG{height:auto !important;height:700px;min-height:700px; padding:0 40px;background-color:#FFF; -webkit-border-radius:3px; -moz-border-radius:3px; -ms-border-radius:3px; border-radius:3px;}
+/* .header{border-bottom:1px solid #e4e4e5;}
+.headerwrap{height:50px;padding-top:10px;width:100%;margin:0px auto; background:#fff;}
+.headerwrap_1{ width:1190px; margin:0 auto; overflow:hidden;position:relative}
+.menu{float:right;margin-top:5px;}
+.menu li{float:left;margin-left:10px;position:relative;}
+.menu li a{font-size:18px;color:#333;padding:2px 8px;border-radius:3px}
+.menu li a:hover{font-size:18px;color:#fff;padding:2px 8px;border-radius:3px;background:#999;}
+.menu li a.current{background:#999;color:#fff}
+.menu li b{width:17px;height:17px;color:#FFF;background:url(../images/radius.png) no-repeat;position:absolute;top:-5px;right:-7px;text-align:center;line-height:17px;}
+.header h1{font-size:24px;color:#333} */
+
+.menu02{float:right;margin-top:5px;}
+.menu02 li{float:left;margin-left:10px;position:relative;}
+.menu02 li a{font-size:18px;color:#333;padding:2px 8px;border-radius:3px}
+.menu02 li a:hover{font-size:18px;color:#fff;padding:2px 8px;border-radius:3px;background:#999;}
+.menu02 li a.current{background:#999;color:#fff}
+.menu02 li b{width:17px;height:17px;color:#FFF;background:url(../images/radius.png) no-repeat;position:absolute;top:-5px;right:-7px;text-align:center;line-height:17px;}
+.coursePj{background: url(../images/notes.png) no-repeat  5px center ;color:#7b9e31;border: 1px solid #7b9e31;border-radius: 3px;display: inline-block;height: 30px;line-height: 30px;margin-left: 10px;padding-left: 30px;padding-right: 15px;}
+.overflow{overflow:hidden; white-space:nowrap;text-overflow:ellipsis;display:block}

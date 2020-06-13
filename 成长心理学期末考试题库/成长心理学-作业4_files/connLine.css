@@ -1,0 +1,8 @@
+@charset "utf-8";
+.groupTitile{ font-size:13px;font-family:bold;background-color:rgba(204, 204, 204, 0.49);width:12%;border-radius:4px;margin-left:-13px;text-align:center;}
+	.ulTop {border-bottom:dotted 1px #bbb;padding:0 10px;padding-bottom:10px;margin-left:2%;}
+	.ulTop li {line-height:25px;;margin-top:10px;}
+	.ulTop li div{line-height:25px;;margin-top:10px;font-size:13px;font-family:bold;}
+	.ulTop i{display:inline-block;width:45px;text-align:center;color:#ccc;font-size:13px;}
+	.ulTop .tip{ color: red;left: 78px;top: -23px;position: relative;line-height:25px;font-family:bold;}
+	.ulTop select{width:60px;height:20px;}

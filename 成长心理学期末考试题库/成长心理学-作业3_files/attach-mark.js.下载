@@ -1,0 +1,65 @@
+function viewMark(obj) {
+	var questionId = $(obj).attr("data1");
+	var recordId = $(obj).attr("data2");
+	var obj = $("#qb" + questionId);
+	var creatorId = $("#creatorId").val();
+
+	// 拿到所有附件
+	var objectId = "";
+	$(obj).find(".attach a").each(function(index, element) {
+		var oid = $(this).attr("data");
+		objectId += (oid + ",");
+	});
+
+	$(obj).find(".attachNew").each(function(index, element) {
+		var element = $(this).children("span:first");
+		var oid = $(element).attr("data");
+		objectId += (oid + ",");
+	});
+	
+	$(obj).find("img:not(.workAttach img, .attach img, .attachNew img)").each(function() {
+		var url = $(this).attr("src");
+		var oid = "";
+		if(typeof url != "undefined" && url.length > 0) {
+			var spt = url.split("/");
+			var str = spt[spt.length - 1];
+			if (str.indexOf(".") == -1) {
+				oid = str;
+			} else {
+				var s = str.split(".");
+				oid = s[0];
+			}
+		}
+		objectId += (oid + ",");
+	});
+
+	if (objectId.length == 0) {
+		alert("请稍后重试");
+		return;
+	}
+	
+	$.ajax({
+		url : "/work/check-attach",
+		type : "get",
+		data : {
+			"objectId" : objectId,
+			"questionId" : questionId,
+			"recordId" : recordId,
+			"fullScore" : 0,
+			"score" : 0,
+			"stuPersonId" : creatorId,
+			"teacherPersonId" : creatorId
+		},
+		async : false,
+		dataType : "json",
+		success : function(data) {
+			if (data.status) {
+				var url = data.url;
+				window.open(url);
+				//window.open(url, "newwindow", "height=" + screen.availHeight + ",width=" + screen.availWidth + ",top=0,left=0,toolbar=no,menubar=no,scrollbars=yes,resizable=no,location=no,status=no");
+			} else {
+				alert("请稍后重试");
+			}
+		}
+	});
+}
